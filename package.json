@@ -1,0 +1,56 @@
+{
+  "name": "nuxt-transformer-js",
+  "version": "1.0.0",
+  "description": "Nuxt module to use the latest supported AI model in the browser with TransformerJS",
+  "repository": "leasmigc/nuxt-transformer-js",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.4.0",
+    "@nuxt/kit": "^3.16.1"
+  },
+  "devDependencies": {
+    "@nuxt/content": "3.4.0",
+    "@nuxt/devtools": "^2.3.1",
+    "@nuxt/eslint": "1.2.0",
+    "@nuxt/eslint-config": "^1.2.0",
+    "@nuxt/fonts": "0.11.0",
+    "@nuxt/icon": "1.11.0",
+    "@nuxt/image": "1.10.0",
+    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.16.1",
+    "@nuxt/scripts": "0.11.2",
+    "@nuxt/test-utils": "^3.17.2",
+    "@types/node": "latest",
+    "@unhead/vue": "^2.0.0-rc.8",
+    "changelogen": "^0.6.1",
+    "eslint": "^9.23.0",
+    "nuxt": "^3.16.1",
+    "typescript": "~5.8.2",
+    "vitest": "^3.0.9",
+    "vue-tsc": "^2.2.8"
+  }
+}

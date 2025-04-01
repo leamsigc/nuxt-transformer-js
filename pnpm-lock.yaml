@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@huggingface/transformers':
-        specifier: ^3.4.0
-        version: 3.4.0
+        specifier: ^3.4.1
+        version: 3.4.1
       '@nuxt/kit':
-        specifier: ^3.16.1
-        version: 3.16.1(magicast@0.3.5)
+        specifier: ^3.16.2
+        version: 3.16.2(magicast@0.3.5)
     devDependencies:
       '@nuxt/content':
         specifier: 3.4.0
@@ -38,7 +38,7 @@ importers:
         version: 1.10.0(db0@0.3.1(@libsql/client@0.15.2)(better-sqlite3@11.9.1)(drizzle-orm@0.39.3(@libsql/client@0.15.2)(better-sqlite3@11.9.1)(kysely@0.27.6)))(ioredis@5.6.0)(magicast@0.3.5)
       '@nuxt/module-builder':
         specifier: ^0.8.4
-        version: 0.8.4(@nuxt/kit@3.16.1(magicast@0.3.5))(nuxi@3.23.1)(sass@1.86.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+        version: 0.8.4(@nuxt/kit@3.16.2(magicast@0.3.5))(nuxi@3.23.1)(sass@1.86.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
       '@nuxt/schema':
         specifier: ^3.16.1
         version: 3.16.1
@@ -1135,8 +1135,8 @@ packages:
     resolution: {integrity: sha512-vQQr2JyWvVFba3Lj9es4q9vCl1sAc74fdgnEMoX8qHrXtswap9ge9uO3ONDzQB0cQ0PUyaKY2N6HaVbTBvSXvw==}
     engines: {node: '>=18'}
 
-  '@huggingface/transformers@3.4.0':
-    resolution: {integrity: sha512-jyuglsWc+Ls9/U7eGDDY+xYgDgDtwxQ4ul/5VQoqo2r0LfAnJ+zSRUjKnY6paOyzyhbKaftfEsvXJ049aL1cyw==}
+  '@huggingface/transformers@3.4.1':
+    resolution: {integrity: sha512-Inbvq9i/33kmd5XHom9MQU7NAOV5UcGmHBwBk9NFw4IPhdoTnfP7wFJxJmceYhRdS+EL1Hpw4he/Ceimau6ORg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5587,7 +5587,6 @@ packages:
 
   libsql@0.5.4:
     resolution: {integrity: sha512-GEFeWca4SDAQFxjHWJBE6GK52LEtSskiujbG3rqmmeTO9t4sfSBKIURNLLpKDDF7fb7jmTuuRkDAn9BZGITQNw==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lighthouse-logger@1.4.2:
@@ -9477,7 +9476,7 @@ snapshots:
 
   '@huggingface/jinja@0.3.3': {}
 
-  '@huggingface/transformers@3.4.0':
+  '@huggingface/transformers@3.4.1':
     dependencies:
       '@huggingface/jinja': 0.3.3
       onnxruntime-node: 1.20.1
@@ -10455,9 +10454,9 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/module-builder@0.8.4(@nuxt/kit@3.16.1(magicast@0.3.5))(nuxi@3.23.1)(sass@1.86.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))':
+  '@nuxt/module-builder@0.8.4(@nuxt/kit@3.16.2(magicast@0.3.5))(nuxi@3.23.1)(sass@1.86.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))':
     dependencies:
-      '@nuxt/kit': 3.16.1(magicast@0.3.5)
+      '@nuxt/kit': 3.16.2(magicast@0.3.5)
       citty: 0.1.6
       consola: 3.4.2
       defu: 6.1.4

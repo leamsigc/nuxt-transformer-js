@@ -34,8 +34,8 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@huggingface/transformers": "^3.4.0",
-    "@nuxt/kit": "^3.16.1"
+    "@huggingface/transformers": "^3.4.1",
+    "@nuxt/kit": "^3.16.2"
   },
   "devDependencies": {
     "@nuxt/content": "3.4.0",

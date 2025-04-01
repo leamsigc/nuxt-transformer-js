@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import BgRemovalWorker from "../workers/bg-removal.worker?worker";
+import { RawImage } from "@huggingface/transformers";
 
 type WorkerStatus = 'idle' | 'loading' | 'loaded' | 'transcribing' | 'done' | 'models' | 'error';
 type ModelsOption = {
@@ -8,20 +9,11 @@ type ModelsOption = {
   description: string;
 };
 
-const getAudioData = async (audioFile: File): Promise<AudioBuffer> => {
-  const arrayBuffer = await audioFile.arrayBuffer();
-  const audioCTX = new AudioContext({
-    sampleRate: 16000,
-  });
-  const audioBuffer = await audioCTX.decodeAudioData(arrayBuffer);
-  return audioBuffer;
-};
-
 
 const status = ref<WorkerStatus>('idle');
 const worker = ref<Worker | null>(null);
 
-const selectedModel = ref('Xenova/whisper-tiny.en');
+const selectedModel = ref('briaai/RMBG-1.4');
 const modelsOptions = ref<ModelsOption[]>([]);
 
 const progress = ref<number>(0);
@@ -41,8 +33,6 @@ export const useBgRemover = () => {
 
       worker.value.onmessage = (event) => {
         const { type, status: workerStatus, progress: workerProgress, error: workerError, result: workerResult, modelsOptions: availableModels } = event.data;
-        console.log(modelsOptions);
-
 
         switch (type) {
           case 'models':
@@ -70,13 +60,14 @@ export const useBgRemover = () => {
     await initWorker();
     worker.value?.postMessage({ type: 'loadModel', payload: { model: selectedModel.value } });
   }
-  const run = async (image: HTMLImageElement) => {
+  const run = async (file: File) => {
     if (status.value === 'idle') {
       await init();
     }
 
     try {
 
+      const image = await RawImage.read(file as unknown as RawImage);
 
       worker.value?.postMessage({
         type: 'run',

@@ -41,7 +41,6 @@ export const useTranscriber = () => {
 
       worker.value.onmessage = (event) => {
         const { type, status: workerStatus, progress: workerProgress, error: workerError, result: workerResult, modelsOptions: availableModels } = event.data;
-        console.log(modelsOptions);
 
 
         switch (type) {

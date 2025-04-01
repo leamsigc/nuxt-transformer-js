@@ -1,0 +1,95 @@
+---
+title: "nav"
+logo: "/logo.png"
+logoAlt: "Nuxt TransformersJs"
+MenuLinks:
+  - name: "Features"
+    href: "#features"
+    image: "https://www.radix-vue.com/logo.svg"
+    children:
+      - name: "Documentation"
+        href: "/docs"
+        children:
+          - name: "Getting started"
+            description: "Install the module and first steps."
+            icon: "lucide:flag"
+            href: "/docs/getting-started"
+          - name: "Install module"
+            description: "How to install module."
+            icon: "lucide:briefcase"
+            href: "/docs/installation"
+          - name: "Usage"
+            description: "How to use the composables."
+            icon: "lucide:mail"
+            href: "/docs/composables"
+      - name: "Examples"
+        href: "#"
+        children:
+          - name: "Transcribe audio to text"
+            description: "Examples implementation of Transcriber"
+            icon: "lucide:flag"
+            href: "/docs/examples/transcriber"
+          - name: "Image background"
+            description: "Examples of Background image remover"
+            icon: "lucide:flag"
+            href: "/docs/examples/bg-remover"
+  - name: "Documentation"
+    href: "/docs"
+  - name: "FAQ"
+    href: "/#faq"
+
+ShortLinks:
+  - name: "Home"
+    href: "/"
+  - name: "Documentation"
+    href: "/docs"
+
+socialMedias:
+  - name: facebook
+    url: https://www.facebook.com/leamsigc
+    icon: "facebook"
+  - name: twitter
+    url: https://twitter.com/leamsigc
+    icon: "twitter"
+  - name: instagram
+    url: https://www.instagram.com/leamsigc
+    icon: "instagram"
+footerLinks:
+  - title: Contact
+    links:
+      - name: Github
+        url: https://github.com/leamsigc/nuxt-better-auth-drizzle
+        icon: "lucide:github"
+      - name: Twitter
+        url: https://twitter.com/leamsigc
+        icon: "lucide:twitter"
+      - name: instagram
+        url: https://www.instagram.com/leamsigc
+        icon: "lucide:instagram"
+      - name: Youtube
+        url: https://www.youtube.com/@leamsigc
+        icon: "lucide:youtube"
+  - title: Platform
+    links:
+      - name: iOS
+        url: /
+      - name: Android
+        url: /
+      - name: Web
+        url: /
+  - title: Help
+    links:
+      - name: Contact us
+        url: /contact
+      - name: FAQ
+        url: /#faq
+      - name: Feedback
+        url: /#faq
+
+actions:
+  - name: ''
+    href: https://github.com/leamsigc/nuxt-transformer-js
+    icon: "lucide:github"
+    label: "View on GitHub"
+    target: _blank
+---

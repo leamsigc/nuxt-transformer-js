@@ -35,6 +35,9 @@ export const useTranscriber = () => {
   const initWorker = async () => {
     if (!worker.value) {
       worker.value = new TranscriptionWorker();
+      if (!worker.value) {
+        throw new Error('Failed to create worker');
+      }
 
       worker.value.onmessage = (event) => {
         const { type, status: workerStatus, progress: workerProgress, error: workerError, result: workerResult, modelsOptions: availableModels } = event.data;

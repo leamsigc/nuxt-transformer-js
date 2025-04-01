@@ -1,0 +1,35 @@
+title: "nav"
+logo: "/logo.png"
+logoAlt: "NuxtZzle Logo"
+
+footerLinks:
+  - title: Contact
+    links:
+      - name: Github
+        url: https://github.com/leamsigc/nuxt-better-auth-drizzle
+        icon: "lucide:github"
+      - name: Bluesky
+        url: https://bsky.app/profile/leamsigc.com
+        icon: "logos:bluesky"
+      - name: instagram
+        url: https://www.instagram.com/leamsigc
+        icon: "lucide:instagram"
+      - name: Youtube
+        url: https://www.youtube.com/@leamsigc
+        icon: "lucide:youtube"
+  - title: Platform
+    links:
+      - name: iOS
+        url: /
+      - name: Android
+        url: /
+      - name: Web
+        url: /
+  - title: Help
+    links:
+      - name: Contact us
+        url: https://leamsigc.com/
+      - name: FAQ
+        url: /#faq
+      - name: Feedback
+        url: https://github.com/leamsigc/must-know-resources-for-programmers/issues/new

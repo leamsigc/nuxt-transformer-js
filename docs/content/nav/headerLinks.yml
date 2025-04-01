@@ -1,0 +1,58 @@
+headerLinks:
+  MenuLinks:
+    - name: "Features"
+      href: "#features"
+      image: "https://www.radix-vue.com/logo.svg"
+      children:
+        - name: "Documentation"
+          href: "/docs"
+          children:
+            - name: "Getting started"
+              description: "Install the module and first steps."
+              icon: "lucide:flag"
+              href: "/docs/getting-started"
+            - name: "Install module"
+              description: "How to install module."
+              icon: "lucide:briefcase"
+              href: "/docs/installation"
+            - name: "Usage"
+              description: "How to use the composables."
+              icon: "lucide:mail"
+              href: "/docs/composables"
+        - name: "Examples"
+          href: "#"
+          children:
+            - name: "Transcribe audio to text"
+              description: "Examples implementation of Transcriber"
+              icon: "lucide:flag"
+              href: "/docs/examples/transcriber"
+            - name: "Image background"
+              description: "Examples of Background image remover"
+              icon: "lucide:flag"
+              href: "/docs/examples/bg-remover"
+    - name: "Documentation"
+      href: "/docs"
+    - name: "FAQ"
+      href: "/#faq"
+  ShortLinks:
+    - name: "Home"
+      href: "/"
+    - name: "Documentation"
+      href: "/docs"
+
+  SocialMedias:
+    - name: facebook
+      href: https://www.facebook.com/leamsigc
+      icon: "facebook"
+    - name: twitter
+      href: https://twitter.com/leamsigc
+      icon: "twitter"
+    - name: instagram
+      href: https://www.instagram.com/leamsigc
+      icon: "instagram"
+  Actions:
+    - name: ''
+      href: https://github.com/leamsigc/must-know-resources-for-programmers
+      icon: "lucide:github"
+      label: "View on GitHub"
+      target: _blank

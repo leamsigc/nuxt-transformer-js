@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   site: {
-    url: 'https://nuxt-transformers-js.netlify.app',
+    url: 'https://nuxt-transformers-js.giessen.dev',
     name: 'Nuxt Transformers JS',
     description: 'Use the latest supported AI model in the browser with TransformerJS',
     defaultLocale: 'en', // not needed if you have @nuxtjs/i18n installed

@@ -52,7 +52,7 @@ headerLinks:
       icon: "instagram"
   Actions:
     - name: ''
-      href: https://github.com/leamsigc/must-know-resources-for-programmers
+      href: https://github.com/leamsigc/nuxt-transformer-js
       icon: "lucide:github"
       label: "View on GitHub"
       target: _blank

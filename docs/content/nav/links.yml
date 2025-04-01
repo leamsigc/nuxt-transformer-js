@@ -32,4 +32,4 @@ footerLinks:
       - name: FAQ
         url: /#faq
       - name: Feedback
-        url: https://github.com/leamsigc/must-know-resources-for-programmers/issues/new
+        url: https://github.com/leamsigc/nuxt-transformer-js/issues/new

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ButtonVariants } from "../ui/button";
+import type { ButtonVariants } from '../ui/button'
 
 /**
  *
@@ -13,51 +13,51 @@ import type { ButtonVariants } from "../ui/button";
  * @todo [✔] Update the typescript.
  */
 interface Action {
-  label: string;
-  href: string;
-  icon: string;
-  variant?: string;
-  target?: string;
+  label: string
+  href: string
+  icon: string
+  variant?: string
+  target?: string
 }
 
 interface Props {
   badge: {
-    label: string;
-    content: string;
-  };
+    label: string
+    content: string
+  }
   heroImage?: {
-    light: string;
-    dark: string;
-    alt?: string;
-  };
-  actions: Action[];
-  showHeroImage?: boolean;
+    light: string
+    dark: string
+    alt?: string
+  }
+  actions: Action[]
+  showHeroImage?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
-  badge: () => ({ label: "New", content: "Design is out" }),
+  badge: () => ({ label: 'New', content: 'Design is out' }),
   heroImage: () => ({
-    light: "img/hero-image-light.jpg",
-    dark: "img/hero-image-dark.jpg",
-    alt: "Dashboard using shadcn-vue and nuxt4",
+    light: 'img/hero-image-light.jpg',
+    dark: 'img/hero-image-dark.jpg',
+    alt: 'Dashboard using shadcn-vue and nuxt4',
   }),
   actions: () => [
     {
-      label: "Get started",
-      href: "/",
-      icon: "mdi:arrow-right",
+      label: 'Get started',
+      href: '/',
+      icon: 'mdi:arrow-right',
     },
     {
-      label: "Documentation",
-      href: "/docs",
-      icon: "",
-      variant: "outline",
+      label: 'Documentation',
+      href: '/docs',
+      icon: '',
+      variant: 'outline',
     },
   ],
   showHeroImage: true,
-});
+})
 
-const { badge, heroImage, showHeroImage } = toRefs(props);
-const mode = useColorMode();
+const { badge, heroImage, showHeroImage } = toRefs(props)
+const mode = useColorMode()
 </script>
 
 <template>
@@ -65,7 +65,10 @@ const mode = useColorMode();
     <section class="container mx-auto">
       <div class="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
         <div class="text-center space-y-8">
-          <UiBadge variant="outline" class="text-sm py-2">
+          <UiBadge
+            variant="outline"
+            class="text-sm py-2"
+          >
             <span class="mr-2 text-primary">
               <UiBadge>{{ badge.label }}</UiBadge>
             </span>
@@ -91,31 +94,53 @@ const mode = useColorMode();
 
           <div class="space-y-4 md:space-y-0 md:space-x-4">
             <slot name="actions">
-              <UiButton v-for="action in actions" :key="action.label" class="w-5/6 md:w-1/4 font-bold group/arrow"
-                :variant="action.variant as ButtonVariants['variant']" as-child :prefetch="false">
-                <NuxtLink :href="action.href" :target="action.target || ''" :aria-label="action.label">
+              <UiButton
+                v-for="action in actions"
+                :key="action.label"
+                class="w-5/6 md:w-1/4 font-bold group/arrow"
+                :variant="action.variant as ButtonVariants['variant']"
+                as-child
+                :prefetch="false"
+              >
+                <NuxtLink
+                  :href="action.href"
+                  :target="action.target || ''"
+                  :aria-label="action.label"
+                >
                   {{ action.label }}
-                  <Icon v-if="action.icon" :name="action.icon"
-                    class="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+                  <Icon
+                    v-if="action.icon"
+                    :name="action.icon"
+                    class="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform"
+                  />
                 </NuxtLink>
               </UiButton>
             </slot>
           </div>
         </div>
 
-        <div v-if="heroImage && showHeroImage" class="relative group mt-14">
+        <div
+          v-if="heroImage && showHeroImage"
+          class="relative group mt-14"
+        >
           <!-- gradient shadow -->
           <div
-            class="absolute -top-6 right-12 w-[90%] h-12 lg:h-[80%] bg-primary/50 blur-3xl rounded-full img-shadow-animation" />
+            class="absolute -top-6 right-12 w-[90%] h-12 lg:h-[80%] bg-primary/50 blur-3xl rounded-full img-shadow-animation"
+          />
 
           <NuxtPicture
             class="w-full md:w-[1200px] mx-auto rounded-lg relative rouded-lg leading-none flex items-center border border-t-2 border-t-primary/30 img-border-animation"
-            :src="mode.value == 'light' ? heroImage.light : heroImage.dark" :alt="heroImage.alt" width="1300"
-            height="900" loading="lazy" />
+            :src="mode.value == 'light' ? heroImage.light : heroImage.dark"
+            :alt="heroImage.alt"
+            width="1300"
+            height="900"
+            loading="lazy"
+          />
 
           <!-- gradient effect img -->
           <div
-            class="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg" />
+            class="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg"
+          />
         </div>
       </div>
     </section>

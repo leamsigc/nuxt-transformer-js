@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
-import type { BaseChartProps } from '.'
-import { ChartSingleTooltip, defaultColors } from '@/components/ui/chart'
-import { cn } from '~~/lib/utils'
 import { Donut } from '@unovis/ts'
 import { VisDonut, VisSingleContainer } from '@unovis/vue'
 import { useMounted } from '@vueuse/core'
 import { type Component, computed, ref } from 'vue'
+import type { BaseChartProps } from '.'
+import { cn } from '~~/lib/utils'
+import { ChartSingleTooltip, defaultColors } from '@/components/ui/chart'
 
 const props = withDefaults(defineProps<Pick<BaseChartProps<T>, 'data' | 'colors' | 'index' | 'margin' | 'showLegend' | 'showTooltip' | 'filterOpacity'> & {
   /**
@@ -61,7 +61,11 @@ const totalValue = computed(() => props.data.reduce((prev, curr) => {
 
 <template>
   <div :class="cn('w-full h-48 flex flex-col items-end', $attrs.class ?? '')">
-    <VisSingleContainer :style="{ height: isMounted ? '100%' : 'auto' }" :margin="{ left: 20, right: 20 }" :data="data">
+    <VisSingleContainer
+      :style="{ height: isMounted ? '100%' : 'auto' }"
+      :margin="{ left: 20, right: 20 }"
+      :data="data"
+    >
       <ChartSingleTooltip
         :selector="Donut.selectors.segment"
         :index="category"

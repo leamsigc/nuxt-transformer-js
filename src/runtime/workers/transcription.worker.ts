@@ -1,13 +1,12 @@
-import { type AutomaticSpeechRecognitionPipeline, pipeline } from "@huggingface/transformers";
+import { type AutomaticSpeechRecognitionPipeline, pipeline } from '@huggingface/transformers'
 
 interface ErrorEvent {
   message: string
 }
 
-const BASE_MODEL = 'Xenova/whisper-tiny.en';
-let transcriber: AutomaticSpeechRecognitionPipeline | null = null;
-let isEnglishModel = true;
-
+const BASE_MODEL = 'Xenova/whisper-tiny.en'
+let transcriber: AutomaticSpeechRecognitionPipeline | null = null
+let isEnglishModel = true
 
 const modelsOptions = [
   {
@@ -84,63 +83,65 @@ const modelsOptions = [
 ]
 
 globalThis.onmessage = async (event) => {
-  const { type, payload } = event.data;
+  const { type, payload } = event.data
 
   switch (type) {
     case 'models':
       try {
-        globalThis.postMessage({ type: 'models', modelsOptions });
-
-      } catch (error: any) {
-        globalThis.postMessage({ type: 'error', error: error.message });
+        globalThis.postMessage({ type: 'models', modelsOptions })
       }
-      break;
+      catch (error: any) {
+        globalThis.postMessage({ type: 'error', error: error.message })
+      }
+      break
     case 'loadModel':
       try {
-        globalThis.postMessage({ type: 'status', status: 'loading', progress: 0 });
+        globalThis.postMessage({ type: 'status', status: 'loading', progress: 0 })
         if (payload.model.includes('.en')) {
-          isEnglishModel = true;
+          isEnglishModel = true
         }
         else {
-          isEnglishModel = false;
+          isEnglishModel = false
         }
 
-        transcriber = await pipeline('automatic-speech-recognition', payload.model || BASE_MODEL);
-        globalThis.postMessage({ type: 'status', status: 'loaded', progress: 100 });
-      } catch (error: any) {
-        globalThis.postMessage({ type: 'error', error: error.message });
+        transcriber = await pipeline('automatic-speech-recognition', payload.model || BASE_MODEL)
+        globalThis.postMessage({ type: 'status', status: 'loaded', progress: 100 })
       }
-      break;
+      catch (error: any) {
+        globalThis.postMessage({ type: 'error', error: error.message })
+      }
+      break
 
     case 'transcribe':
       if (!transcriber) {
-        globalThis.postMessage({ type: 'error', error: 'Model not loaded' });
-        return;
+        globalThis.postMessage({ type: 'error', error: 'Model not loaded' })
+        return
       }
       try {
-        globalThis.postMessage({ type: 'status', status: 'transcribing', progress: 0 });
-        const { audio, language, model } = payload;
-        console.log('Transcribing audio:', audio, 'with language:', language, 'and model:', model);
+        globalThis.postMessage({ type: 'status', status: 'transcribing', progress: 0 })
+        const { audio, language, model } = payload
+        console.log('Transcribing audio:', audio, 'with language:', language, 'and model:', model)
         const settings = {
           language,
-          return_timestamps: true
-        };
+          return_timestamps: true,
+        }
 
-        const result = await transcriber(audio, !isEnglishModel ? settings : {});
-        globalThis.postMessage({ type: 'status', status: 'done', progress: 100 });
-        globalThis.postMessage({ type: 'result', result });
-      } catch (error: any) {
-        globalThis.postMessage({ type: 'error', error: error.message });
+        const result = await transcriber(audio, !isEnglishModel ? settings : {})
+        globalThis.postMessage({ type: 'status', status: 'done', progress: 100 })
+        globalThis.postMessage({ type: 'result', result })
       }
-      break;
+      catch (error: any) {
+        globalThis.postMessage({ type: 'error', error: error.message })
+      }
+      break
 
     case 'unloadModel':
-      transcriber = null;
-      globalThis.postMessage({ type: 'status', status: 'unloaded', progress: 100 });
-      break;
+      transcriber = null
+      globalThis.postMessage({ type: 'status', status: 'unloaded', progress: 100 })
+      break
 
     default:
-      globalThis.postMessage({ type: 'error', error: 'Unknown message type' });
-      break;
+      globalThis.postMessage({ type: 'error', error: 'Unknown message type' })
+      break
   }
-};
+}

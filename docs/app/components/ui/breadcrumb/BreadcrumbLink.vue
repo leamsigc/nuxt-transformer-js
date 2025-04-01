@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
-import { cn } from '~~/lib/utils'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
+import { cn } from '~~/lib/utils'
 
 const props = withDefaults(defineProps<PrimitiveProps & { class?: HTMLAttributes['class'] }>(), {
   as: 'a',

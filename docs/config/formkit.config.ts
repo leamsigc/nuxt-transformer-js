@@ -3,6 +3,6 @@ import { rootClasses } from '../formkit/formkit.theme'
 
 export default defineFormKitConfig({
   config: {
-    rootClasses
-  }
+    rootClasses,
+  },
 })

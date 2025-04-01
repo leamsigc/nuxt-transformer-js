@@ -33,69 +33,69 @@ import {
   Sparkles,
   SquareTerminal,
   Trash2,
-} from "lucide-vue-next";
-import { signOut, useSession } from "~~/lib/auth-client";
+} from 'lucide-vue-next'
+import { signOut, useSession } from '~~/lib/auth-client'
 
-const { data: session } = await useSession(useFetch);
-const router = useRouter();
+const { data: session } = await useSession(useFetch)
+const router = useRouter()
 
 const HandleSingOut = async () => {
-  await signOut();
-  router.push("/login");
-};
+  await signOut()
+  router.push('/login')
+}
 
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: 'shadcn',
+    email: 'm@example.com',
+    avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: "Just an Ideas",
+      name: 'Just an Ideas',
       logo: GalleryVerticalEnd,
-      plan: "Premium",
+      plan: 'Premium',
     },
   ],
   projects: [
     {
-      name: "Users",
-      url: "/app/admin/users",
+      name: 'Users',
+      url: '/app/admin/users',
       icon: Folder,
     },
     {
-      name: "Profile",
-      url: "/app/user/profile",
+      name: 'Profile',
+      url: '/app/user/profile',
       icon: SquareTerminal,
     },
     {
-      name: "Home",
-      url: "/",
+      name: 'Home',
+      url: '/',
       icon: BookOpen,
     },
     {
-      name: "Analytics",
-      url: "#",
+      name: 'Analytics',
+      url: '#',
       icon: PieChart,
     },
     {
-      name: "Favorites",
-      url: "#",
+      name: 'Favorites',
+      url: '#',
       icon: Bot,
     },
     {
-      name: "Top 10",
-      url: "#",
+      name: 'Top 10',
+      url: '#',
       icon: Command,
-    }
+    },
   ],
-};
+}
 
-const activeTeam = ref(data.teams[0]);
+const activeTeam = ref(data.teams[0])
 
 function setActiveTeam(team: typeof data.teams[number]) {
-  activeTeam.value = team;
+  activeTeam.value = team
 }
 </script>
 
@@ -107,11 +107,17 @@ function setActiveTeam(team: typeof data.teams[number]) {
           <UiSidebarMenuItem>
             <UiDropdownMenu>
               <UiDropdownMenuTrigger as-child>
-                <UiSidebarMenuButton size="lg"
-                  class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                <UiSidebarMenuButton
+                  size="lg"
+                  class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                >
                   <div
-                    class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <component :is="activeTeam?.logo" class="size-4" />
+                    class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                  >
+                    <component
+                      :is="activeTeam?.logo"
+                      class="size-4"
+                    />
                   </div>
                   <div class="grid flex-1 text-left leading-tight">
                     <span class="truncate font-semibold">{{ activeTeam?.name }}</span>
@@ -120,15 +126,26 @@ function setActiveTeam(team: typeof data.teams[number]) {
                   <ChevronsUpDown class="ml-auto" />
                 </UiSidebarMenuButton>
               </UiDropdownMenuTrigger>
-              <UiDropdownMenuContent class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" align="start"
-                side="bottom" :side-offset="4">
+              <UiDropdownMenuContent
+                class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                align="start"
+                side="bottom"
+                :side-offset="4"
+              >
                 <UiDropdownMenuLabel class="text-muted-foreground">
                   Teams
                 </UiDropdownMenuLabel>
-                <UiDropdownMenuItem v-for="(team, index) in data.teams" :key="team.name" class="gap-2 p-2"
-                  @click="setActiveTeam(team)">
+                <UiDropdownMenuItem
+                  v-for="(team, index) in data.teams"
+                  :key="team.name"
+                  class="gap-2 p-2"
+                  @click="setActiveTeam(team)"
+                >
                   <div class="flex size-6 items-center justify-center rounded-sm border">
-                    <component :is="team.logo" class="size-4 shrink-0" />
+                    <component
+                      :is="team.logo"
+                      class="size-4 shrink-0"
+                    />
                   </div>
                   {{ team.name }}
                   <UiDropdownMenuShortcut>⌘{{ index + 1 }}</UiDropdownMenuShortcut>
@@ -138,7 +155,9 @@ function setActiveTeam(team: typeof data.teams[number]) {
                   <div class="flex size-6 items-center justify-center rounded-md border bg-background">
                     <Plus class="size-4" />
                   </div>
-                  <div class="font-medium text-muted-foreground">Add team</div>
+                  <div class="font-medium text-muted-foreground">
+                    Add team
+                  </div>
                 </UiDropdownMenuItem>
               </UiDropdownMenuContent>
             </UiDropdownMenu>
@@ -149,7 +168,10 @@ function setActiveTeam(team: typeof data.teams[number]) {
         <UiSidebarGroup class="group-data-[collapsible=icon]:hidden">
           <UiSidebarGroupLabel>Ideas</UiSidebarGroupLabel>
           <UiSidebarMenu>
-            <UiSidebarMenuItem v-for="item in data.projects" :key="item.name">
+            <UiSidebarMenuItem
+              v-for="item in data.projects"
+              :key="item.name"
+            >
               <UiSidebarMenuButton as-child>
                 <a :href="item.url">
                   <component :is="item.icon" />
@@ -165,11 +187,18 @@ function setActiveTeam(team: typeof data.teams[number]) {
           <UiSidebarMenuItem>
             <UiDropdownMenu>
               <UiDropdownMenuTrigger as-child>
-                <UiSidebarMenuButton size="lg"
-                  class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                <UiSidebarMenuButton
+                  size="lg"
+                  class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                >
                   <UiAvatar class="h-8 w-8 rounded-lg">
-                    <UiAvatarImage :src="session?.user.image || data.user.avatar" :alt="session?.user.name" />
-                    <UiAvatarFallback class="rounded-lg"> CN </UiAvatarFallback>
+                    <UiAvatarImage
+                      :src="session?.user.image || data.user.avatar"
+                      :alt="session?.user.name"
+                    />
+                    <UiAvatarFallback class="rounded-lg">
+                      CN
+                    </UiAvatarFallback>
                   </UiAvatar>
                   <div class="grid flex-1 text-left leading-tight">
                     <span class="truncate font-semibold">{{ session?.user.name }}</span>
@@ -178,13 +207,22 @@ function setActiveTeam(team: typeof data.teams[number]) {
                   <ChevronsUpDown class="ml-auto size-4" />
                 </UiSidebarMenuButton>
               </UiDropdownMenuTrigger>
-              <UiDropdownMenuContent class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" side="bottom"
-                align="end" :side-offset="4">
+              <UiDropdownMenuContent
+                class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                side="bottom"
+                align="end"
+                :side-offset="4"
+              >
                 <UiDropdownMenuLabel class="p-0 font-normal">
                   <div class="flex items-center gap-2 px-1 py-1.5 text-left">
                     <UiAvatar class="h-8 w-8 rounded-lg">
-                      <UiAvatarImage :src="session?.user.image || data.user.avatar" :alt="session?.user.name" />
-                      <UiAvatarFallback class="rounded-lg"> CN </UiAvatarFallback>
+                      <UiAvatarImage
+                        :src="session?.user.image || data.user.avatar"
+                        :alt="session?.user.name"
+                      />
+                      <UiAvatarFallback class="rounded-lg">
+                        CN
+                      </UiAvatarFallback>
                     </UiAvatar>
                     <div class="grid flex-1 text-left leading-tight">
                       <span class="truncate font-semibold">{{ session?.user.name }}</span>
@@ -228,14 +266,20 @@ function setActiveTeam(team: typeof data.teams[number]) {
     </UiSidebar>
     <UiSidebarInset>
       <header
-        class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+        class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
+      >
         <div class="flex items-center gap-2 px-4">
           <UiSidebarTrigger class="-ml-1" />
-          <UiSeparator orientation="vertical" class="mr-2 h-4" />
+          <UiSeparator
+            orientation="vertical"
+            class="mr-2 h-4"
+          />
           <UiBreadcrumb>
             <UiBreadcrumbList>
               <UiBreadcrumbItem class="hidden md:block">
-                <UiBreadcrumbLink href="#"> Building Your Application </UiBreadcrumbLink>
+                <UiBreadcrumbLink href="#">
+                  Building Your Application
+                </UiBreadcrumbLink>
               </UiBreadcrumbItem>
               <UiBreadcrumbSeparator class="hidden md:block" />
               <UiBreadcrumbItem>

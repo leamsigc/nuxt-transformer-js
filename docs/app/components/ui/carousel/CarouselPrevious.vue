@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { WithClassAsProps } from "./interface";
-import { cn } from "~~/lib/utils";
-import { useCarousel } from "./useCarousel";
+import type { WithClassAsProps } from './interface'
+import { useCarousel } from './useCarousel'
+import { cn } from '~~/lib/utils'
 
-const props = defineProps<WithClassAsProps>();
+const props = defineProps<WithClassAsProps>()
 
-const { orientation, canScrollPrev, scrollPrev } = useCarousel();
+const { orientation, canScrollPrev, scrollPrev } = useCarousel()
 </script>
 
 <template>
@@ -17,14 +17,17 @@ const { orientation, canScrollPrev, scrollPrev } = useCarousel();
         orientation === 'horizontal'
           ? '-left-12 top-1/2 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-        props.class
+        props.class,
       )
     "
     variant="outline"
     @click="scrollPrev"
   >
     <slot>
-      <Icon name="lucide:arrow-left" class="h-4 w-4 text-current" />
+      <Icon
+        name="lucide:arrow-left"
+        class="h-4 w-4 text-current"
+      />
       <span class="sr-only">Previous Slide</span>
     </slot>
   </UiButton>

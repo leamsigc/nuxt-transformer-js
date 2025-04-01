@@ -10,11 +10,11 @@
  * @todo [ ] Integration test.
  * @todo [✔] Update the typescript.
  */
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 
 const HandleThemeChange = () => {
-  colorMode.preference = colorMode.value === "light" ? "dark" : "light";
-};
+  colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
+}
 </script>
 
 <template>
@@ -24,13 +24,25 @@ const HandleThemeChange = () => {
     class="w-full justify-start"
     @click="HandleThemeChange"
   >
-    <div v-if="$colorMode.value == 'light'" class="flex gap-2">
-      <Icon name="lucide:moon" class="size-5" />
+    <div
+      v-if="$colorMode.value == 'light'"
+      class="flex gap-2"
+    >
+      <Icon
+        name="lucide:moon"
+        class="size-5"
+      />
       <span class="block lg:hidden"> Dark </span>
     </div>
 
-    <div v-else class="flex gap-2">
-      <Icon name="lucide:sun" class="size-5" />
+    <div
+      v-else
+      class="flex gap-2"
+    >
+      <Icon
+        name="lucide:sun"
+        class="size-5"
+      />
       <span class="block lg:hidden">Light</span>
     </div>
 

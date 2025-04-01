@@ -11,28 +11,37 @@
  * @todo [✔] Update the typescript.
  */
 const props = defineProps<{
-    url: string;
-}>();
+  url: string
+}>()
 const target = ref(null)
 const targetIsVisible = ref(false)
 
 const { stop } = useIntersectionObserver(
-    target,
-    ([entry], observerElement) => {
-        if (entry?.isIntersecting) {
-            targetIsVisible.value = entry?.isIntersecting
-            stop()
-        }
-    },
+  target,
+  ([entry], observerElement) => {
+    if (entry?.isIntersecting) {
+      targetIsVisible.value = entry?.isIntersecting
+      stop()
+    }
+  },
 )
-
 </script>
 
 <template>
-    <section class="text-center" ref="target">
-        <LazyClientOnly fallback="Loading Comments..." fallback-tag="section">
-            <LazyBlueSkyComments :url v-if="targetIsVisible" />
-        </LazyClientOnly>
-    </section>
+  <section
+    ref="target"
+    class="text-center"
+  >
+    <LazyClientOnly
+      fallback="Loading Comments..."
+      fallback-tag="section"
+    >
+      <LazyBlueSkyComments
+        v-if="targetIsVisible"
+        :url
+      />
+    </LazyClientOnly>
+  </section>
 </template>
+
 <style scoped></style>

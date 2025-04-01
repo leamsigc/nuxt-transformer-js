@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from '~~/lib/utils'
 import { Search } from 'lucide-vue-next'
 import { ComboboxInput, type ComboboxInputProps, useForwardProps } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
+import { cn } from '~~/lib/utils'
 
 defineOptions({
   inheritAttrs: false,
@@ -22,7 +22,10 @@ const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
-  <div class="flex items-center border-b px-3" cmdk-input-wrapper>
+  <div
+    class="flex items-center border-b px-3"
+    cmdk-input-wrapper
+  >
     <Search class="mr-2 h-4 w-4 shrink-0 opacity-50" />
     <ComboboxInput
       v-bind="{ ...forwardedProps, ...$attrs }"

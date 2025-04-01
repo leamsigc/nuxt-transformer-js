@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { User } from '~~/db/schema';
+import type { User } from '~~/db/schema'
 
 import { generateColumns } from '~/components/table/columns'
-import type { UiSkeleton } from '#build/components';
+import type { UiSkeleton } from '#build/components'
 
 const userColumns = [
 
@@ -14,28 +14,27 @@ const userColumns = [
   { key: 'banned', header: 'Banned', sortable: false, filterable: false },
 ]
 
-
 const columns = generateColumns(userColumns, {
   selectable: true,
   actions: {
     menuItems: [
       {
         label: 'Impersonate User',
-        action: (user) => HandleImpersonateUser(user),
-        isVisible: () => true
+        action: user => HandleImpersonateUser(user),
+        isVisible: () => true,
       },
       {
         label: 'Edit User',
-        action: (user) => HandleOpenEditUser(user),
-        isVisible: (user) => true
+        action: user => HandleOpenEditUser(user),
+        isVisible: user => true,
       },
       {
         label: 'Delete User',
-        action: (user) => HandleDeleteUser(user),
-        isVisible: () => true
-      }
-    ]
-  }
+        action: user => HandleDeleteUser(user),
+        isVisible: () => true,
+      },
+    ],
+  },
 })
 
 const {
@@ -43,30 +42,29 @@ const {
   isLoading,
   fetchUsers,
   deleteUser,
-  impersonateUser
+  impersonateUser,
 } = useUserManagement()
 
-
 const activeUser = ref<User | null>(null)
-const { openEditUser, openDeleteUser, openAddUser } = useUser();
+const { openEditUser, openDeleteUser, openAddUser } = useUser()
 
 const HandleDeleteUser = (user: User) => {
-  activeUser.value = user;
-  openDeleteUser();
+  activeUser.value = user
+  openDeleteUser()
 }
 const HandleDeleteUserConfirm = async () => {
   if (activeUser.value) {
-    await deleteUser(activeUser.value.id);
-    activeUser.value = null;
-    await fetchUsers();
+    await deleteUser(activeUser.value.id)
+    activeUser.value = null
+    await fetchUsers()
   }
 }
 const HandleOpenEditUser = (user: User) => {
-  openEditUser(user);
+  openEditUser(user)
 }
 
 const HandleImpersonateUser = (user: User) => {
-  impersonateUser(user.id);
+  impersonateUser(user.id)
 }
 fetchUsers()
 </script>
@@ -80,17 +78,29 @@ fetchUsers()
           <div>
             Manage users and their roles
           </div>
-          <UiButton variant="outline" @click="openAddUser">Add User</UiButton>
+          <UiButton
+            variant="outline"
+            @click="openAddUser"
+          >
+            Add User
+          </UiButton>
         </UiCardDescription>
       </UiCardHeader>
       <UiCardContent>
-        <DataTable :data="users" :columns />
+        <DataTable
+          :data="users"
+          :columns
+        />
       </UiCardContent>
     </UiCard>
     <TableLoading v-else />
 
-    <DeleteUser v-if="activeUser" :userId="activeUser.id" :username="activeUser.name"
-      @delete-user="HandleDeleteUserConfirm" />
+    <DeleteUser
+      v-if="activeUser"
+      :user-id="activeUser.id"
+      :username="activeUser.name"
+      @delete-user="HandleDeleteUserConfirm"
+    />
     <UpdateUser @refresh="fetchUsers" />
     <CreateUser @refresh="fetchUsers" />
   </div>

@@ -39,7 +39,7 @@ export function getBaseSchema<
   ChildType extends z.ZodAny | z.AnyZodObject = z.ZodAny,
 >(schema: ChildType | z.ZodEffects<ChildType>): ChildType | null {
   if (!schema)
-    return null;
+    return null
   if ('innerType' in schema._def)
     return getBaseSchema(schema._def.innerType as ChildType)
 
@@ -55,7 +55,7 @@ export function getBaseSchema<
  */
 export function getBaseType(schema: z.ZodAny) {
   const baseSchema = getBaseSchema(schema)
-  return baseSchema ? baseSchema._def.typeName : '';
+  return baseSchema ? baseSchema._def.typeName : ''
 }
 
 /**
@@ -94,7 +94,7 @@ export function getObjectFormSchema(
 }
 
 function isIndex(value: unknown): value is number {
-  return Number(value) >= 0;
+  return Number(value) >= 0
 }
 /**
  * Constructs a path with dot paths for arrays to use brackets to be compatible with vee-validate path syntax
@@ -102,7 +102,7 @@ function isIndex(value: unknown): value is number {
 export function normalizeFormPath(path: string): string {
   const pathArr = path.split('.')
   if (!pathArr.length)
-    return '';
+    return ''
 
   let fullPath = String(pathArr[0])
   for (let i = 1; i < pathArr.length; i++) {
@@ -125,14 +125,14 @@ export function isNotNestedPath(path: string) {
   return /^\[.+\]$/.test(path)
 }
 function isObject(obj: unknown): obj is Record<string, unknown> {
-  return obj !== null && !!obj && typeof obj === 'object' && !Array.isArray(obj);
+  return obj !== null && !!obj && typeof obj === 'object' && !Array.isArray(obj)
 }
 function isContainerValue(value: unknown): value is Record<string, unknown> {
   return isObject(value) || Array.isArray(value)
 }
 function cleanupNonNestedPath(path: string) {
   if (isNotNestedPath(path))
-    return path.replace(/\[|\]/g, '');
+    return path.replace(/\[|\]/g, '')
 
   return path
 }

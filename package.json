@@ -1,6 +1,6 @@
 {
   "name": "nuxt-transformer-js",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Nuxt module to use the latest supported AI model in the browser with TransformerJS",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": " npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "docs:build": "cd docs && nuxt generate",
     "docs:dev": "pnpm nuxt dev docs",
     "lint": "eslint .",

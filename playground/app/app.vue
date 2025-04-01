@@ -10,15 +10,14 @@
  * @todo [ ] Integration test.
  * @todo [✔] Update the typescript.
  */
-
 </script>
 
 <template>
   <div>
-
     <ClientOnly>
       <TranscriptView />
     </ClientOnly>
   </div>
 </template>
+
 <style scoped></style>

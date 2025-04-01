@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from '~~/lib/utils'
 import { Toggle, type ToggleEmits, type ToggleProps, useForwardPropsEmits } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
 import { type ToggleVariants, toggleVariants } from '.'
+import { cn } from '~~/lib/utils'
 
 const props = withDefaults(defineProps<ToggleProps & {
   class?: HTMLAttributes['class']

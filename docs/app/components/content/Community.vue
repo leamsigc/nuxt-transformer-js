@@ -11,21 +11,25 @@
  * @todo [✔] Update the typescript.
  */
 interface Props {
-  icon?: string;
-  url?: string;
-  label?: string;
+  icon?: string
+  url?: string
+  label?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  icon: "lucide:discord",
-  url: "https://discord.com/",
-  label: "Join our Discord",
-});
+  icon: 'lucide:discord',
+  url: 'https://discord.com/',
+  label: 'Join our Discord',
+})
 
-const { icon, url, label } = toRefs(props);
+const { icon, url, label } = toRefs(props)
 </script>
+
 <template>
-  <section id="community" class="py-12">
+  <section
+    id="community"
+    class="py-12"
+  >
     <UiSeparator show-buckle />
     <div class="container ">
       <div class="lg:w-[60%] mx-auto">
@@ -47,8 +51,14 @@ const { icon, url, label } = toRefs(props);
 
           <UiCardFooter>
             <UiButton as-child>
-              <NuxtLink :href="url" target="_blank">
-                <Icon class="size-6 mr-2" :name="icon" />
+              <NuxtLink
+                :href="url"
+                target="_blank"
+              >
+                <Icon
+                  class="size-6 mr-2"
+                  :name="icon"
+                />
                 {{ label }}
               </NuxtLink>
             </UiButton>

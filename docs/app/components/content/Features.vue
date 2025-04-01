@@ -19,57 +19,57 @@ import {
   PictureInPicture,
   MousePointerClick,
   Newspaper,
-} from "lucide-vue-next";
+} from 'lucide-vue-next'
 
 interface FeaturesProps {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 interface Props {
-  list?: FeaturesProps[];
+  list?: FeaturesProps[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   list: () => [
     {
-      icon: "tabletSmartphone",
-      title: "Mobile Friendly",
+      icon: 'tabletSmartphone',
+      title: 'Mobile Friendly',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.',
     },
     {
-      icon: "badgeCheck",
-      title: "Social Proof",
+      icon: 'badgeCheck',
+      title: 'Social Proof',
       description:
-        "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+        'Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.',
     },
     {
-      icon: "goal",
-      title: "Targeted Content",
+      icon: 'goal',
+      title: 'Targeted Content',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.',
     },
     {
-      icon: "pictureInPicture",
-      title: "Strong Visuals",
+      icon: 'pictureInPicture',
+      title: 'Strong Visuals',
       description:
-        "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+        'Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.',
     },
     {
-      icon: "mousePointerClick",
-      title: "Clear CTA",
+      icon: 'mousePointerClick',
+      title: 'Clear CTA',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+        'Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.',
     },
     {
-      icon: "newspaper",
-      title: "Clear Headline",
+      icon: 'newspaper',
+      title: 'Clear Headline',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.',
     },
   ],
-});
+})
 
 const iconMap: Record<
   string,
@@ -90,14 +90,19 @@ const iconMap: Record<
   mousePointerClick: MousePointerClick,
   messageCircle: MessageCircle,
   newspaper: Newspaper,
-};
-const { list } = toRefs(props);
+}
+const { list } = toRefs(props)
 </script>
 
 <template>
-  <section id="features" class="container py-24 sm:py-32">
+  <section
+    id="features"
+    class="container py-24 sm:py-32"
+  >
     <h2 class="text-lg text-primary text-center mb-2 tracking-wider">
-      <slot name="title"> Features </slot>
+      <slot name="title">
+        Features
+      </slot>
     </h2>
 
     <h3 class="text-3xl md:text-4xl text-center font-bold mb-4">
@@ -114,11 +119,17 @@ const { list } = toRefs(props);
     </h4>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div v-for="{ icon, title, description } in list" :key="title">
+      <div
+        v-for="{ icon, title, description } in list"
+        :key="title"
+      >
         <UiCard class="h-full bg-background border-0 shadow-none">
           <UiCardHeader class="flex justify-center items-center">
             <div class="bg-primary/20 p-2 rounded-full ring-8 ring-primary/10 mb-4">
-              <component :is="iconMap[icon]" class="size-6 text-primary" />
+              <component
+                :is="iconMap[icon]"
+                class="size-6 text-primary"
+              />
             </div>
 
             <UiCardTitle>
@@ -133,7 +144,10 @@ const { list } = toRefs(props);
       </div>
     </div>
   </section>
-  <div id="container" class="container w-screen min-h-screen p-12 grid grid-cols-12 gap-6">
+  <div
+    id="container"
+    class="container w-screen min-h-screen p-12 grid grid-cols-12 gap-6"
+  >
     <ShinyCard class="h-80 col-span-8" />
     <ShinyCard class="h-80 col-span-4" />
     <ShinyCard class="h-80 col-span-6" />

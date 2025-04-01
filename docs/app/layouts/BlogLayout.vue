@@ -13,12 +13,13 @@
 </script>
 
 <template>
-    <main class="blog">
-        <Navbar />
-        <section class="mx-auto max-w-5xl px-6 prose pt-6 text-sm md:text-xl dark:prose-invert">
-            <slot />
-        </section>
-        <TheFooter />
-    </main>
+  <main class="blog">
+    <Navbar />
+    <section class="mx-auto max-w-5xl px-6 prose pt-6 text-sm md:text-xl dark:prose-invert">
+      <slot />
+    </section>
+    <TheFooter />
+  </main>
 </template>
+
 <style scoped></style>

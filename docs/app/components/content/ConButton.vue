@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from "vue";
-import type { PrimitiveProps } from "radix-vue";
-import type { ButtonVariants } from "@/components/ui/button";
+import type { HTMLAttributes } from 'vue'
+import type { PrimitiveProps } from 'radix-vue'
+import type { ButtonVariants } from '@/components/ui/button'
 /**
  *
  * Component Description:Desc
@@ -14,13 +14,13 @@ import type { ButtonVariants } from "@/components/ui/button";
  * @todo [✔] Update the typescript.
  */
 interface Props extends PrimitiveProps {
-  variant?: ButtonVariants["variant"];
-  size?: ButtonVariants["size"];
-  class?: HTMLAttributes["class"];
+  variant?: ButtonVariants['variant']
+  size?: ButtonVariants['size']
+  class?: HTMLAttributes['class']
 }
 const props = withDefaults(defineProps<Props>(), {
-  as: "button",
-});
+  as: 'button',
+})
 </script>
 
 <template>
@@ -28,4 +28,5 @@ const props = withDefaults(defineProps<Props>(), {
     <slot name="default" />
   </UiButton>
 </template>
+
 <style scoped></style>

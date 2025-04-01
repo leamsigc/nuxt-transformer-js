@@ -10,45 +10,45 @@
  * @todo [ ] Integration test.
  * @todo [✔] Update the typescript.
  */
-import { Sparkle, Tag, Paintbrush, Blocks, LineChart, Wallet } from "lucide-vue-next";
+import { Sparkle, Tag, Paintbrush, Blocks, LineChart, Wallet } from 'lucide-vue-next'
 
 interface BenefitsProps {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 interface Props {
-  list?: BenefitsProps[];
+  list?: BenefitsProps[]
 }
 const props = withDefaults(defineProps<Props>(), {
   list: () => [
     {
-      icon: "blocks",
-      title: "Install",
+      icon: 'blocks',
+      title: 'Install',
       description:
-        "Install the module `nuxt-transformersjs`",
+        'Install the module `nuxt-transformersjs`',
     },
     {
-      icon: "lineChart",
-      title: "Update nuxt config",
+      icon: 'lineChart',
+      title: 'Update nuxt config',
       description:
-        "Update the nuxt config to add the module `nuxt-transformersjs` to your project",
+        'Update the nuxt config to add the module `nuxt-transformersjs` to your project',
     },
     {
-      icon: "wallet",
-      title: "Read documentation",
+      icon: 'wallet',
+      title: 'Read documentation',
       description:
-        "Read the documentation and start using the provided composables",
+        'Read the documentation and start using the provided composables',
     },
     {
-      icon: "sparkle",
-      title: "Enjoy",
+      icon: 'sparkle',
+      title: 'Enjoy',
       description:
-        "Copy paste the examples and enjoy the process",
+        'Copy paste the examples and enjoy the process',
     },
   ],
-});
-const { list } = toRefs(props);
+})
+const { list } = toRefs(props)
 
 const iconMap: Record<
   string,
@@ -65,15 +65,20 @@ const iconMap: Record<
   blocks: Blocks,
   lineChart: LineChart,
   wallet: Wallet,
-};
+}
 </script>
 
 <template>
-  <section id="benefits" class="container py-24 sm:py-32">
+  <section
+    id="benefits"
+    class="container py-24 sm:py-32"
+  >
     <div class="grid lg:grid-cols-2 place-items-center lg:gap-24">
       <div>
         <h2 class="text-lg text-primary mb-2 tracking-wider">
-          <slot name="title"> Features </slot>
+          <slot name="title">
+            Features
+          </slot>
         </h2>
 
         <h3 class="text-3xl md:text-4xl font-bold mb-4">
@@ -90,15 +95,24 @@ const iconMap: Record<
       </div>
 
       <div class="grid lg:grid-cols-2 gap-4 w-full">
-        <ShinyCard v-for="({ icon, title, description }, index) in list" :key="title" :show-bg="false">
+        <ShinyCard
+          v-for="({ icon, title, description }, index) in list"
+          :key="title"
+          :show-bg="false"
+        >
           <UiCard
-            class="bg-muted/50 dark:bg-card hover:bg-background dark:hover:bg-background transition-all delay-75 group/number h-full">
+            class="bg-muted/50 dark:bg-card hover:bg-background dark:hover:bg-background transition-all delay-75 group/number h-full"
+          >
             <UiCardHeader>
               <div class="flex justify-between">
-                <component class="size-8 mb-6 text-primary" :is="iconMap[icon]" />
+                <component
+                  :is="iconMap[icon]"
+                  class="size-8 mb-6 text-primary"
+                />
 
                 <span
-                  class="text-5xl text-muted-foreground/15 font-medium transition-all delay-75 group-hover/number:text-muted-foreground/30">
+                  class="text-5xl text-muted-foreground/15 font-medium transition-all delay-75 group-hover/number:text-muted-foreground/30"
+                >
                   0{{ index + 1 }}
                 </span>
               </div>

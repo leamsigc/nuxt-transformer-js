@@ -22,16 +22,16 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  confetti: "cannonSide",
-});
+  confetti: 'cannonSide',
+})
 
 function randomInRange(min: number, max: number) {
-  return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min
 }
 
 const action: Actions = {
   cannonSide: () => {
-    const end = Date.now() + 5 * 1000;
+    const end = Date.now() + 5 * 1000
     function frame() {
       useConfetti({
         particleCount: 2,
@@ -39,82 +39,82 @@ const action: Actions = {
         spread: 55,
         origin: { x: 0 },
         // colors: colors,
-      });
+      })
       useConfetti({
         particleCount: 2,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
         // colors: colors,
-      });
+      })
 
       if (Date.now() < end) {
-        requestAnimationFrame(frame);
+        requestAnimationFrame(frame)
       }
     }
-    requestAnimationFrame(frame);
+    requestAnimationFrame(frame)
   },
   randomCannon: () => {
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const duration = 5 * 1000
+    const animationEnd = Date.now() + duration
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
     const interval: NodeJS.Timeout = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
+      const timeLeft = animationEnd - Date.now()
 
       if (timeLeft <= 0) {
-        return clearInterval(interval);
+        return clearInterval(interval)
       }
 
-      const particleCount = 50 * (timeLeft / duration);
+      const particleCount = 50 * (timeLeft / duration)
       // since particles fall down, start a bit higher than random
       useConfetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-      });
+      })
       useConfetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-      });
-    }, 250);
+      })
+    }, 250)
   },
   fireworkCannon: () => {
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const duration = 5 * 1000
+    const animationEnd = Date.now() + duration
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
     const interval: NodeJS.Timeout = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
+      const timeLeft = animationEnd - Date.now()
 
       if (timeLeft <= 0) {
-        return clearInterval(interval);
+        return clearInterval(interval)
       }
 
-      const particleCount = 50 * (timeLeft / duration);
+      const particleCount = 50 * (timeLeft / duration)
       // since particles fall down, start a bit higher than random
       useConfetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-      });
+      })
       useConfetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-      });
-    }, 250);
+      })
+    }, 250)
   },
   firework: (_?: Event) => {
-    useConfetti({ particleCount: 100, spread: 90, origin: { y: 0.6, x: 0.7 } });
+    useConfetti({ particleCount: 100, spread: 90, origin: { y: 0.6, x: 0.7 } })
   },
-};
+}
 
 onMounted(() => {
-  action[props.confetti]();
-});
+  action[props.confetti]()
+})
 defineExpose({
   action,
-});
+})
 </script>
 
 <template>

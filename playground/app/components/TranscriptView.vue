@@ -10,20 +10,17 @@
  * @todo [ ] Integration test.
  * @todo [✔] Update the typescript.
  */
-const { getModels, modelsOptions, selectedModel, progress, init, status, run, result } = useTranscriber();
-await getModels();
-
+const { getModels, modelsOptions, selectedModel, progress, init, status, run, result } = useTranscriber()
+await getModels()
 
 const HandleSelectedFile = (event: Event) => {
+  const audioFile = event.target as HTMLInputElement
+  const file = audioFile.files
+  if (!file || !file[0]) return
 
-  const audioFile = event.target as HTMLInputElement;
-  const file = audioFile.files;
-  if (!file || !file[0]) return;
-
-
-  const selectedFile = file[0];
-  const language = 'en';
-  run(selectedFile, language);
+  const selectedFile = file[0]
+  const language = 'en'
+  run(selectedFile, language)
 }
 </script>
 
@@ -32,9 +29,21 @@ const HandleSelectedFile = (event: Event) => {
     <section>
       <h1>Options</h1>
       <div>
-        <select v-model="selectedModel" placeholder="Select a model">
-          <option disabled value="">Select a model</option>
-          <option v-for="model in modelsOptions" :value="model.id" :key="model.id">
+        <select
+          v-model="selectedModel"
+          placeholder="Select a model"
+        >
+          <option
+            disabled
+            value=""
+          >
+            Select a model
+          </option>
+          <option
+            v-for="model in modelsOptions"
+            :key="model.id"
+            :value="model.id"
+          >
             {{ model.name }}
           </option>
         </select>
@@ -42,7 +51,12 @@ const HandleSelectedFile = (event: Event) => {
     </section>
     <section>
       <h2>Load model</h2>
-      <button @click="init" :disabled="!selectedModel">Load selected model</button>
+      <button
+        :disabled="!selectedModel"
+        @click="init"
+      >
+        Load selected model
+      </button>
     </section>
 
     <section>
@@ -55,7 +69,11 @@ const HandleSelectedFile = (event: Event) => {
     <section>
       <h2>Transcribe</h2>
       <div>
-        <input type="file" accept="audio/*" @change="HandleSelectedFile">
+        <input
+          type="file"
+          accept="audio/*"
+          @change="HandleSelectedFile"
+        >
       </div>
     </section>
 
@@ -67,4 +85,5 @@ const HandleSelectedFile = (event: Event) => {
     </section>
   </div>
 </template>
+
 <style scoped></style>

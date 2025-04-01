@@ -12,6 +12,7 @@
  */
 import { ConfigProvider } from 'radix-vue'
 </script>
+
 <template>
   <main>
     <ConfigProvider>

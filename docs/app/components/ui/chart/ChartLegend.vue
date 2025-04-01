@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { BulletLegendItemInterface } from '@unovis/ts'
-import { buttonVariants } from '@/components/ui/button'
 import { BulletLegend } from '@unovis/ts'
 import { VisBulletLegend } from '@unovis/vue'
 import { nextTick, onMounted, ref } from 'vue'
+import { buttonVariants } from '@/components/ui/button'
 
 const props = withDefaults(defineProps<{ items: BulletLegendItemInterface[] }>(), {
   items: () => [],
@@ -41,7 +41,10 @@ function onLegendItemClick(d: BulletLegendItemInterface, i: number) {
 </script>
 
 <template>
-  <div ref="elRef" class="w-max">
+  <div
+    ref="elRef"
+    class="w-max"
+  >
     <VisBulletLegend
       :items="items"
       :on-legend-item-click="onLegendItemClick"

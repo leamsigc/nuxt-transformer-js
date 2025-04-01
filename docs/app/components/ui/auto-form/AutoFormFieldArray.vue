@@ -1,55 +1,59 @@
 <script setup lang="ts" generic="T extends z.ZodAny">
-import type { Config, ConfigItem } from "./interface";
-import { PlusIcon, TrashIcon } from "lucide-vue-next";
-import { FieldArray, FieldContextKey, useField } from "vee-validate";
-import { computed, provide } from "vue";
-import * as z from "zod";
-import { beautifyObjectName, getBaseType } from "./utils";
+import { PlusIcon, TrashIcon } from 'lucide-vue-next'
+import { FieldArray, FieldContextKey, useField } from 'vee-validate'
+import { computed, provide } from 'vue'
+import * as z from 'zod'
+import type { Config, ConfigItem } from './interface'
+import { beautifyObjectName, getBaseType } from './utils'
 
 const props = defineProps<{
-  fieldName: string;
-  required?: boolean;
-  config?: Config<T>;
-  schema?: z.ZodArray<T>;
-  disabled?: boolean;
-}>();
+  fieldName: string
+  required?: boolean
+  config?: Config<T>
+  schema?: z.ZodArray<T>
+  disabled?: boolean
+}>()
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isZodArray(item: z.ZodArray<any> | z.ZodDefault<any>): item is z.ZodArray<any> {
-  return item instanceof z.ZodArray;
+  return item instanceof z.ZodArray
 }
 
 function isZodDefault(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  item: z.ZodArray<any> | z.ZodDefault<any>
+  item: z.ZodArray<any> | z.ZodDefault<any>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): item is z.ZodDefault<any> {
-  return item instanceof z.ZodDefault;
+  return item instanceof z.ZodDefault
 }
 
 const itemShape = computed(() => {
-  if (!props.schema) return;
+  if (!props.schema) return
 
   const schema: z.ZodAny = isZodArray(props.schema)
     ? props.schema._def.type
     : isZodDefault(props.schema)
-    ? // @ts-expect-error missing schema
+      ? // @ts-expect-error missing schema
       props.schema._def.innerType._def.type
-    : null;
+      : null
 
   return {
     type: getBaseType(schema),
     schema,
-  };
-});
+  }
+})
 
-const fieldContext = useField(props.fieldName);
+const fieldContext = useField(props.fieldName)
 // @ts-expect-error ignore missing `id`
-provide(FieldContextKey, fieldContext);
+provide(FieldContextKey, fieldContext)
 </script>
 
 <template>
-  <FieldArray v-slot="{ fields, remove, push }" as="section" :name="fieldName">
+  <FieldArray
+    v-slot="{ fields, remove, push }"
+    as="section"
+    :name="fieldName"
+  >
     <slot v-bind="props">
       <UiAccordion
         type="multiple"
@@ -59,15 +63,24 @@ provide(FieldContextKey, fieldContext);
         as-child
       >
         <UiFormItem>
-          <UiAccordionItem :value="fieldName" class="border-none">
+          <UiAccordionItem
+            :value="fieldName"
+            class="border-none"
+          >
             <UiAccordionTrigger>
-              <UiAutoFormLabel class="text-base" :required="required">
+              <UiAutoFormLabel
+                class="text-base"
+                :required="required"
+              >
                 {{ schema?.description || beautifyObjectName(fieldName) }}
               </UiAutoFormLabel>
             </UiAccordionTrigger>
 
             <UiAccordionContent>
-              <template v-for="(field, index) of fields" :key="field.key">
+              <template
+                v-for="(field, index) of fields"
+                :key="field.key"
+              >
                 <div class="mb-4 p-1">
                   <UiAutoFormField
                     :field-name="`${fieldName}[${index}]`"
@@ -96,7 +109,10 @@ provide(FieldContextKey, fieldContext);
                 class="mt-4 flex items-center"
                 @click="push(null)"
               >
-                <PlusIcon class="mr-2" :size="16" />
+                <PlusIcon
+                  class="mr-2"
+                  :size="16"
+                />
                 Add
               </UiButton>
             </UiAccordionContent>

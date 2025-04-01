@@ -37,7 +37,7 @@ export default function useDependencies(
 
     if (index >= 0 && sourceInitial.join(',') === targetInitial.join(',')) {
       const [_currentLast, ...currentInitial] = fieldName.split('.').toReversed()
-      return getFromPath(form.value, currentInitial.join('.') + sourceLast);
+      return getFromPath(form.value, currentInitial.join('.') + sourceLast)
     }
 
     return getFromPath(form.value, source)

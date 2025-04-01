@@ -1,32 +1,38 @@
 <script setup lang="ts">
-import type { FieldProps } from "./interface";
-import { TrashIcon } from "lucide-vue-next";
-import { ref } from "vue";
-import { beautifyObjectName } from "./utils";
+import { TrashIcon } from 'lucide-vue-next'
+import { ref } from 'vue'
+import type { FieldProps } from './interface'
+import { beautifyObjectName } from './utils'
 
-defineProps<FieldProps>();
+defineProps<FieldProps>()
 
-const inputFile = ref<File>();
+const inputFile = ref<File>()
 async function parseFileAsString(file: File | undefined): Promise<string> {
   return new Promise((resolve, reject) => {
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onloadend = () => {
-        resolve(reader.result as string);
-      };
+        resolve(reader.result as string)
+      }
       reader.onerror = (err) => {
-        reject(err);
-      };
-      reader.readAsDataURL(file);
+        reject(err)
+      }
+      reader.readAsDataURL(file)
     }
-  });
+  })
 }
 </script>
 
 <template>
-  <UiFormField v-slot="slotProps" :name="fieldName">
+  <UiFormField
+    v-slot="slotProps"
+    :name="fieldName"
+  >
     <UiFormItem v-bind="$attrs">
-      <UiAutoFormLabel v-if="!config?.hideLabel" :required="required">
+      <UiAutoFormLabel
+        v-if="!config?.hideLabel"
+        :required="required"
+      >
         {{ config?.label || beautifyObjectName(label ?? fieldName) }}
       </UiAutoFormLabel>
       <UiFormControl>

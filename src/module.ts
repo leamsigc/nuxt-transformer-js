@@ -9,7 +9,7 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'nuxtTransformerjs',
     compatibility: {
       nuxt: '>=3.0.0',
-    }
+    },
   },
   // Default configuration options of the Nuxt module
   defaults: {},

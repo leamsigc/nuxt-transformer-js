@@ -34,11 +34,17 @@ function template(d: any) {
 }
 
 function color(d: unknown, i: number) {
-  return props.colors[i] ?? 'transparent';
+  return props.colors[i] ?? 'transparent'
 }
 </script>
 
 <template>
-  <VisTooltip :horizontal-shift="20" :vertical-shift="20" />
-  <VisCrosshair :template="template" :color="color" />
+  <VisTooltip
+    :horizontal-shift="20"
+    :vertical-shift="20"
+  />
+  <VisCrosshair
+    :template="template"
+    :color="color"
+  />
 </template>

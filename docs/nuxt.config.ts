@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/content',
     '@formkit/nuxt',
-    'nuxt-auth-utils',
     'shadcn-nuxt',
     '@nuxt/eslint',
     'radix-vue/nuxt',
@@ -30,9 +29,9 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   site: {
-    url: 'https://nuxt-better-auth.giessen.dev/',
-    name: 'Nuxt setup with Better Auth module |  Drizzle + Nuxt + Tailwind CSS + content + FormKit',
-    description: 'How to get started with Nuxt 4 and Better Auth| Step by step tutorial.',
+    url: 'https://nuxt-transformers-js.netlify.app',
+    name: 'Nuxt Transformers JS',
+    description: 'Use the latest supported AI model in the browser with TransformerJS',
     defaultLocale: 'en', // not needed if you have @nuxtjs/i18n installed
   },
   colorMode: {

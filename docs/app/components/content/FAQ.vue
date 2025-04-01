@@ -22,30 +22,30 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   list: () => [
     {
-      question: 'Is this template free?',
-      answer: 'Yes. It is a free Shadcn/Vue template.',
+      question: 'How can I use this module?',
+      answer: 'You can install the module, but I recommend that you create each file base on the documentation.',
       value: 'item-1',
     },
     {
-      question: 'Duis aute irure dolor in reprehenderit in voluptate velit?',
+      question: 'Can I use the specific AI model and the composables?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam consectetur sapiente, iste rerum reiciendis animi nihil nostrum sit quo, modi quod.',
+        'Yes, that is the recomended way to use this module. If you have use shadcn-vue, is the same idea.',
       value: 'item-2',
     },
     {
-      question: 'Lorem ipsum dolor sit amet Consectetur natus dolor minus quibusdam?',
+      question: 'Can I request a specific model or task ?',
       answer:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis.',
+        'Yes for sure, but it can be that someone already have the model that you need, so you can use it.',
       value: 'item-3',
     },
     {
-      question: 'Excepteur sint occaecat cupidata non proident sunt?',
-      answer: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+      question: 'Where can I find the documentation for the Transformer js module ?',
+      answer: 'You can read the documentation in the website. https://huggingface.co/docs/transformers.js/index',
       value: 'item-4',
     },
     {
-      question: 'Enim ad minim veniam, quis nostrud exercitation ullamco laboris?',
-      answer: 'consectetur adipisicing elit. Sint labore.',
+      question: 'Where I can find models that are available or that can be use with Transformers js?',
+      answer: 'You can find all the models that are available in the website. https://huggingface.co/models?library=transformers.js',
       value: 'item-5',
     },
   ],
@@ -54,10 +54,7 @@ const { list } = toRefs(props)
 </script>
 
 <template>
-  <section
-    id="faq"
-    class="container md:w-[700px] py-24 sm:py-32"
-  >
+  <section id="faq" class="container md:w-[700px] py-24 sm:py-32">
     <div class="text-center mb-8">
       <h2 class="text-lg text-primary text-center mb-2 tracking-wider">
         <slot name="title">
@@ -72,16 +69,8 @@ const { list } = toRefs(props)
       </h3>
     </div>
 
-    <UiAccordion
-      type="single"
-      collapsible
-      class="AccordionRoot"
-    >
-      <UiAccordionItem
-        v-for="{ question, answer, value } in list"
-        :key="value"
-        :value="value"
-      >
+    <UiAccordion type="single" collapsible class="AccordionRoot">
+      <UiAccordionItem v-for="{ question, answer, value } in list" :key="value" :value="value">
         <UiAccordionTrigger class="text-left">
           {{ question }}
         </UiAccordionTrigger>
@@ -92,10 +81,7 @@ const { list } = toRefs(props)
 
     <h3 class="font-medium mt-4">
       Still have questions?
-      <NuxtLink
-        href="/"
-        class="text-muted-foreground underline"
-      >Contact us </NuxtLink>
+      <NuxtLink href="/" class="text-muted-foreground underline">Contact us </NuxtLink>
     </h3>
   </section>
 </template>

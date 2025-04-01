@@ -1,7 +1,7 @@
 ---
 title: "nav"
 logo: "/logo.png"
-logoAlt: "Nuxt TransformersJs"
+logoAlt: "Nuxt Transformer Js"
 MenuLinks:
   - name: "Features"
     href: "#features"

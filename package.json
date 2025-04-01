@@ -1,6 +1,6 @@
 {
   "name": "nuxt-transformer-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Nuxt module to use the latest supported AI model in the browser with TransformerJS",
   "repository": {
     "type": "git",

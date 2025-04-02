@@ -15,39 +15,44 @@ Run popular AI models directly in your browser with this Nuxt module powered by 
 
 ```bash
 # npm
-npm i nuxt-transformerjs
-npx nuxi@latest module add image
+npm i @huggingface/transformers
 # yarn
-yarn add nuxt-transformerjs
+yarn add @huggingface/transformers
 
 # pnpm
-pnpm add nuxt-transformerjs
+pnpm add @huggingface/transformers
 ```
 
 ## Setup
 
-Add the module to your `nuxt.config.ts`:
+Explore the task that we have available for you:
 
-```ts
-export default defineNuxtConfig({
-  modules: ['nuxt-transformerjs']
-})
-```
+- [Tasks](/docs/getting-started)
+
 
 ## Usage
 
 ```vue
 <script setup>
-import { useTransformer } from '#imports'
 
-// Initialize a model
-const { loadModel, runInference } = useTransformer()
+const { getModels, modelsOptions, selectedModel, progress, init, status, run, result } = useTranscriber()
 
-// Load a specific model
-await loadModel('bert-base-uncased')
+// Get a list of available models
+await getModels()
 
-// Run inference
-const result = await runInference('Your text here')
+// Upload a file
+const HandleSelectedFile = (event: Event) => {
+  const audioFile = event.target as HTMLInputElement
+  const file = audioFile.files
+  if (!file || !file[0]) return
+
+  const selectedFile = file[0]
+  const language = 'en'
+
+
+  // Run the task
+  run(selectedFile, language)
+}
 </script>
 ```
 
@@ -65,10 +70,79 @@ await worker.process(data)
 
 ## Available Models
 
-- BERT
-- GPT-2
-- T5
-- More models coming soon...
+```js
+{
+    id: 'Xenova/whisper-tiny.en',
+    name: 'whisper-tiny.en',
+    description: 'whisper-tiny.en (English)',
+  },
+  {
+    id: 'Xenova/whisper-tiny',
+    name: 'whisper-tiny',
+    description: 'whisper-tiny (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-small',
+    name: 'whisper-small',
+    description: 'whisper-small (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-small.en',
+    name: 'whisper-small.en',
+    description: 'whisper-small.en (English)',
+  },
+  {
+    id: 'Xenova/whisper-base',
+    name: 'whisper-base',
+    description: 'whisper-base (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-medium.en',
+    name: 'whisper-medium.en',
+    description: 'whisper-medium.en (English)',
+  },
+  {
+    id: 'Xenova/whisper-medium',
+    name: 'whisper-medium',
+    description: 'whisper-medium (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-large',
+    name: 'whisper-large',
+    description: 'whisper-large (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-large-v2',
+    name: 'whisper-large-v2',
+    description: 'whisper-large-v2 (Multilingual)',
+  },
+  {
+    id: 'Xenova/whisper-large-v3',
+    name: 'whisper-large-v3',
+    description: 'whisper-large-v3 (Multilingual)',
+  },
+
+  {
+    id: 'onnx-community/whisper-tiny_timestamped',
+    name: 'whisper-tiny_timestamped',
+    description: 'whisper-tiny_timestamped (Multilingual)',
+  },
+  {
+    id: 'onnx-community/whisper-small_timestamped',
+    name: 'whisper-small_timestamped',
+    description: 'whisper-small_timestamped (Multilingual)',
+  },
+  {
+    id: 'onnx-community/whisper-base_timestamped',
+    name: 'whisper-base_timestamped',
+    description: 'whisper-base_timestamped (Multilingual)',
+  },
+  {
+    id: 'onnx-community/whisper-large-v3-turbo_timestamped',
+    name: 'whisper-large-v3-turbo_timestamped',
+    description: 'whisper-large-v3-turbo_timestamped (Multilingual)',
+  },
+```
 
 ## Tech Stack
 

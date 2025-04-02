@@ -5,10 +5,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const isUserNavigatingToTheApp = routeStart.startsWith('/app')
   const isBlog = routeStart.startsWith('/blog/')
 
-  if (isUserNavigatingToTheApp) {
-    setPageLayout('dashboard-layout')
-  }
-  else if (isBlog) {
+  if (isBlog) {
     setPageLayout('blog-layout')
   }
+
 })

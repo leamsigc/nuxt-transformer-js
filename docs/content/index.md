@@ -55,9 +55,8 @@ showHeroImage: false
 
 ---
 #title
-Use Ai model that run in browser with 
-  <span class="gradient-text">Nuxt <br/> & Transformers JS </span>
-  all in browser.
+
+:div Use Ai model that run in browser with  <span class="gradient-text">Nuxt <br/> & Transformers JS </span> all in browser.
 
 #description
 Run popular AI models directly in your browser with this Nuxt module powered by Transformer.js. Perform AI tasks efficiently using web workers while keeping your main thread responsive.

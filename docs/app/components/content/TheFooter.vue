@@ -19,56 +19,31 @@ const { data: site } = await useAsyncData('meta_site', () =>
 </script>
 
 <template>
-  <footer
-    id="footer"
-    class="container py-24 pb-16 sm:py-32 sm:pb-24"
-  >
+  <footer id="footer" class="container py-24 pb-16 sm:py-32 sm:pb-24">
     <div class="p-10 bg-muted/50 dark:bg-card border rounded-2xl">
       <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
         <div class="col-span-full xl:col-span-2">
-          <a
-            href="#"
-            class="flex font-bold items-center"
-          >
-            <NuxtLink
-              v-if="site"
-              href="/"
-              class="font-bold text-lg flex items-center"
-            >
-              <NuxtImg
+          <a href="#" class="flex font-bold items-center">
+            <NuxtLink v-if="site" href="/" class="font-bold text-lg flex items-center">
+              <!-- <NuxtImg
                 :src="site.siteMeta.logo"
                 :alt="site.siteMeta.logoAlt"
                 class="w-64 rounded-full"
                 width="160"
                 height="60"
-              />
+              /> -->
+              <span>{{ site.siteMeta.logoAlt }}</span>
             </NuxtLink>
           </a>
         </div>
 
-        <div
-          v-for="{ title, links } in data?.footerLinks"
-          :key="title"
-          class="flex flex-col gap-2 "
-        >
+        <div v-for="{ title, links } in data?.footerLinks" :key="title" class="flex flex-col gap-2 ">
           <h3 class="font-bold text-lg">
             {{ title }}
           </h3>
-          <div
-            v-for="{ name, url, icon } in links"
-            :key="name"
-          >
-            <NuxtLink
-              :href="url"
-              class="opacity-60 hover:opacity-100"
-              :arial-label="name"
-              :title="name"
-            >
-              <Icon
-                v-if="icon"
-                :name="icon"
-                class="mr-2"
-              />
+          <div v-for="{ name, url, icon } in links" :key="name">
+            <NuxtLink :href="url" class="opacity-60 hover:opacity-100" :arial-label="name" :title="name">
+              <Icon v-if="icon" :name="icon" class="mr-2" />
               {{ name }}
             </NuxtLink>
           </div>
@@ -79,19 +54,13 @@ const { data: site } = await useAsyncData('meta_site', () =>
       <section className="">
         <h3 class="">
           &copy; 2024 Designed and developed by
-          <a
-            target="_blank"
-            href="https://github.com/leoMirandaa"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
+          <a target="_blank" href="https://github.com/leoMirandaa"
+            className="text-primary transition-all border-primary hover:border-b-2">
             Leo Miranda
           </a>
           Port to nuxt 4 by
-          <a
-            target="_blank"
-            href="https://github.com/leamsigc"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
+          <a target="_blank" href="https://github.com/leamsigc"
+            className="text-primary transition-all border-primary hover:border-b-2">
             Leamsigc
           </a>
         </h3>
